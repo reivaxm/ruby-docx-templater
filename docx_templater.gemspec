@@ -4,14 +4,14 @@ Gem::Specification.new do |s|
   s.name = 'docx_templater'
   s.version = File.read('lib/VERSION').strip
 
-  s.authors = ['Jonathan Andrew Wolter']
+  s.authors = ['Xavier MORTELETTE']
 
-  s.email = 'jaw@jawspeak.com'
+  s.email = 'reivaxm@epikaf.net'
 
-  s.date = '2011-12-10'
+  s.date = '2014-02-21'
   s.description = 'A Ruby library to template Microsoft Word .docx files.'
   s.summary = 'Generates new Word .docx files based on a template file.'
-  s.homepage = 'https://github.com/jawspeak/ruby-docx-templater'
+  s.homepage = 'https://github.com/reivaxm/ruby-docx-templater'
 
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.rdoc']
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{lib,script,spec}/**/*'] + root_files
   s.test_files = Dir['spec/**/*']
 
+  s.add_runtime_dependency('logger')
   s.add_runtime_dependency('nokogiri')
   s.add_runtime_dependency('rubyzip')
 
