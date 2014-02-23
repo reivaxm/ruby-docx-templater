@@ -2,6 +2,7 @@ require 'zip'
 
 module DocxTemplater
   class DocxCreator
+    include Logging
     attr_reader :template_path, :template_processor
 
     def initialize(template_path, data, escape_html = true)
@@ -29,8 +30,10 @@ module DocxTemplater
 
     def copy_or_template(entry_name, entry_bytes)
       # Inside the word document archive is one file with contents of the actual document. Modify it.
-      if entry_name == 'word/document.xml'
-        template_processor.render(entry_bytes)
+      if entry_name =~ /word\/(document|header\d+|footer\d+)\.xml/
+        logger.debug("Alter document : #{entry_name}")
+        #template_processor.render(entry_bytes)
+        template_processor.update_document(entry_bytes)
       else
         entry_bytes
       end
